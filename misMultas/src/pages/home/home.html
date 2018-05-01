@@ -1,14 +1,18 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Servicio de Transito Nacional
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-item>
+    <ion-label>Digita tu Celdula</ion-label>
+    <ion-input [(ngModel)]="user.identification" placeholder="Cedula de ciudadania"> </ion-input>
+  </ion-item>
+  <button ion-button block clear (click)="verificarCedula(user)" >Consultar</button>
+  <ion-item>
+    <ion-label>{{user.Names}}</ion-label>
+  </ion-item>
 </ion-content>
