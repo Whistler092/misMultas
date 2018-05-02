@@ -3,4 +3,5 @@ export interface User {
     identification: string;
     names: string;
     lastName: string;
+    penalties: Array<any>;
 }

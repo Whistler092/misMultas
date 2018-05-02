@@ -9,10 +9,35 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Digita tu Celdula</ion-label>
-    <ion-input [(ngModel)]="user.identification" placeholder="Cedula de ciudadania"> </ion-input>
+    <ion-input [(ngModel)]="user.identification" placeholder=""> </ion-input>
   </ion-item>
-  <button ion-button block clear (click)="verificarCedula(user)" >Consultar</button>
-  <ion-item>
-    <ion-label>{{user.Names}}</ion-label>
-  </ion-item>
+  <button ion-button block clear (click)="verificarCedula(user)">{{verificarText}}</button>
+  <ion-list  [hidden]="user.names === ''">
+
+    <ion-list-header>Usuario Encontrado: </ion-list-header>
+    <ion-item>
+      <ion-icon name='body' item-start></ion-icon>
+      <h2>{{user.names}}</h2>
+      <p>{{user.lastName}}</p>
+      <ion-note item-end>Multas {{user.penalties !== undefined ? user.penalties.length : 0}}</ion-note>
+    </ion-item>
+    
+    <ion-list-header>Multas Encontradas: </ion-list-header>
+    <ion-item *ngFor="let item of user.penalties" > 
+      <ion-icon [hidden]="!item.state" name="card" item-start></ion-icon>
+      <ion-icon [hidden]="item.state" name="checkmark" item-start></ion-icon>
+      <h3>{{item.description}}</h3>
+      <p>
+       {{item.date | date:'dd-MM-yyyy' }}
+      </p>
+      <ion-note item-end> Pendiente: {{item.state ? item.value : 0}} </ion-note>
+      <ion-item no-lines>
+          <h3>{{item.vehicle.licensePlate}}</h3>
+          <p>{{item.vehicle.model}} ({{item.vehicle.year}})</p>
+          
+      </ion-item>
+    </ion-item>
+     
+    
+  </ion-list>
 </ion-content>
