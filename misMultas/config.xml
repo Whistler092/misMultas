@@ -94,4 +94,6 @@
     </plugin>
     <allow-navigation href="http://10.40.11.34:8100" />
     <engine name="android" spec="7.0.0" />
+    <allow-navigation href="http://10.10.25.118:8100" />
+    <allow-navigation href="http://192.168.0.184:8100" />
 </widget>
